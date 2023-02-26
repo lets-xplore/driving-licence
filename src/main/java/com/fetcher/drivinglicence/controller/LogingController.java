@@ -16,7 +16,7 @@ public class LogingController {
     @Autowired
     private LoginService loginService;
 
-    @PostMapping(value = "/create/account", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/signup", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public MessageResponse createAccount(@RequestBody LoginRequest loginRequest) {
         return this.loginService.createAccount(loginRequest);
     }
