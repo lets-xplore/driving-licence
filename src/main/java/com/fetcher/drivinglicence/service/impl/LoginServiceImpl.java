@@ -4,9 +4,12 @@ import com.fetcher.drivinglicence.model.LoginModel;
 import com.fetcher.drivinglicence.repository.LoginRepository;
 import com.fetcher.drivinglicence.request.LoginRequest;
 import com.fetcher.drivinglicence.response.MessageResponse;
+import com.fetcher.drivinglicence.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-public class LoginServiceImpl {
+@Service
+public class LoginServiceImpl implements LoginService {
 
     @Autowired
     private LoginRepository loginRepository;
@@ -25,7 +28,7 @@ public class LoginServiceImpl {
     public MessageResponse loginAccount(LoginRequest loginRequest) {
         LoginModel loginModel = this.loginRepository.findByEmailAndPassword(loginRequest.getEmail(), loginRequest.getPassword());
         MessageResponse messageResponse = new MessageResponse();
-        if (loginRequest == null) {
+        if (loginModel == null) {
             messageResponse.setStatus("failure");
             messageResponse.setMessage("Either email or password is wrong");
             return messageResponse;
