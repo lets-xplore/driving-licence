@@ -1,12 +1,11 @@
 package com.fetcher.drivinglicence.response;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
+import lombok.extern.jackson.Jacksonized;
 
-@Getter
-@Setter
-@ToString
+@Data
+@Jacksonized
+@Builder
 public class MessageResponse {
     private String message;
     private String status;
